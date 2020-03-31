@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>学有所思</title>
-    <link>http://1057.pub/</link>
-    <description>Recent content on 学有所思</description>
+    <title>hugo on 学有所思</title>
+    <link>http://1057.pub/tags/hugo/</link>
+    <description>Recent content in hugo on 学有所思</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 01 Apr 2020 03:46:01 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 01 Apr 2020 05:47:59 +0800</lastBuildDate>
     
-	<atom:link href="http://1057.pub/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://1057.pub/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -20,15 +20,6 @@
       <description>&lt;h2 id=&#34;1-hellohugo&#34;&gt;1. Hello，Hugo！&lt;/h2&gt;
 &lt;p&gt;之前使用 Jekyll 引擎构建的静态博客放在 GitHub Pages 已经很长一段时间没更新了，我对配置 Ruby 环境和安装 Jekyll 很没有耐心（不熟悉的技术以及网速慢），便不想多折腾。&lt;/p&gt;
 &lt;p&gt;知道 Hugo 已经很久了，最近尝试了下发现环境的搭建很简单，找了个不错的主题就重新开始了。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>http://1057.pub/about/</link>
-      <pubDate>Wed, 01 Apr 2020 03:46:01 +0800</pubDate>
-      
-      <guid>http://1057.pub/about/</guid>
-      <description>无所寄托，亦无心流浪。</description>
     </item>
     
   </channel>

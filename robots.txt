@@ -1,2 +1,2 @@
 User-agent: *
-Disallow:
+Sitemap: http://1057.pub/sitemap.xml

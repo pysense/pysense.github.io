@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>博客从 Jekyll 更换为 Hugo - 学有所思</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="PySense" /><meta name="description" content="1. Hello，Hugo！ 之前使用 Jekyll 引擎构建的静态博客放在 GitHub Pages 已经很长一段时间没更新了，我对配置 Ruby 环境和安装 Jekyll 很没有耐心（不熟悉的技术以及网速慢），便不想多折腾。
+知道 Hugo 已经很久了，最近尝试了下发现环境的搭建很简单，找了个不错的主题就重新开始了。
+" /><meta name="keywords" content="hugo, 博客" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="http://1057.pub/post/tech/jekyll-to-hugo/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="博客从 Jekyll 更换为 Hugo" />
+<meta property="og:description" content="1. Hello，Hugo！
+之前使用 Jekyll 引擎构建的静态博客放在 GitHub Pages 已经很长一段时间没更新了，我对配置 Ruby 环境和安装 Jekyll 很没有耐心（不熟悉的技术以及网速慢），便不想多折腾。
+知道 Hugo 已经很久了，最近尝试了下发现环境的搭建很简单，找了个不错的主题就重新开始了。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://1057.pub/post/tech/jekyll-to-hugo/" />
+<meta property="article:published_time" content="2020-04-01T05:47:59+08:00" />
+<meta property="article:modified_time" content="2020-04-01T05:47:59+08:00" />
+<meta itemprop="name" content="博客从 Jekyll 更换为 Hugo">
+<meta itemprop="description" content="1. Hello，Hugo！
+之前使用 Jekyll 引擎构建的静态博客放在 GitHub Pages 已经很长一段时间没更新了，我对配置 Ruby 环境和安装 Jekyll 很没有耐心（不熟悉的技术以及网速慢），便不想多折腾。
+知道 Hugo 已经很久了，最近尝试了下发现环境的搭建很简单，找了个不错的主题就重新开始了。">
+<meta itemprop="datePublished" content="2020-04-01T05:47:59&#43;08:00" />
+<meta itemprop="dateModified" content="2020-04-01T05:47:59&#43;08:00" />
+<meta itemprop="wordCount" content="1514">
+
+
+
+<meta itemprop="keywords" content="hugo," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="博客从 Jekyll 更换为 Hugo"/>
+<meta name="twitter:description" content="1. Hello，Hugo！
+之前使用 Jekyll 引擎构建的静态博客放在 GitHub Pages 已经很长一段时间没更新了，我对配置 Ruby 环境和安装 Jekyll 很没有耐心（不熟悉的技术以及网速慢），便不想多折腾。
+知道 Hugo 已经很久了，最近尝试了下发现环境的搭建很简单，找了个不错的主题就重新开始了。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">1057</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">1057</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">博客从 Jekyll 更换为 Hugo</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-04-01 </span>
+        
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-hellohugo">1. Hello，Hugo！</a>
+      <ul>
+        <li><a href="#11-安装-hugo">1.1. 安装 Hugo</a></li>
+        <li><a href="#12-创建-hugo-站点">1.2. 创建 Hugo 站点</a></li>
+        <li><a href="#13-添加-hugo-主题">1.3. 添加 Hugo 主题</a></li>
+        <li><a href="#14-启动-hugo-本地服务">1.4. 启动 Hugo 本地服务</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-部署到-github-pages">2. 部署到 GitHub Pages</a>
+      <ul>
+        <li><a href="#21-修改主题配置文件">2.1. 修改主题配置文件</a></li>
+        <li><a href="#22-添加博客文章">2.2. 添加博客文章</a></li>
+        <li><a href="#23-创建-about-页面">2.3. 创建 About 页面</a></li>
+        <li><a href="#24-发布到-github-pages">2.4. 发布到 GitHub Pages</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-参考">3. 参考</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="1-hellohugo">1. Hello，Hugo！</h2>
+<p>之前使用 Jekyll 引擎构建的静态博客放在 GitHub Pages 已经很长一段时间没更新了，我对配置 Ruby 环境和安装 Jekyll 很没有耐心（不熟悉的技术以及网速慢），便不想多折腾。</p>
+<p>知道 Hugo 已经很久了，最近尝试了下发现环境的搭建很简单，找了个不错的主题就重新开始了。</p>
+<h3 id="11-安装-hugo">1.1. 安装 Hugo</h3>
+<p>参考官网的文档：<a href="https://gohugo.io/getting-started/installing">Install Hugo | Hugo</a>，选择自己的系统和可用的工具安装即可。</p>
+<p>本文使用 Windows 系统，并已安装 <code>Scoop</code> 命令行安装程序。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">scoop install hugo
+</code></pre></td></tr></table>
+</div>
+</div><p>验证</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">λ hugo version
+Hugo Static Site Generator v0.68.3-157669A0 windows/amd64 BuildDate: 2020-03-24T12:04:36Z
+</code></pre></td></tr></table>
+</div>
+</div><p>注：如果需要将博客托管到 GitHub Pages 建议安装 Git，另外可以安装 Cmder 使用 Tab 键补全命令，比起 CMD 和 Git Bash，Cmder 用起来还是很爽的。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">scoop install git
+scoop install cmder
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="12-创建-hugo-站点">1.2. 创建 Hugo 站点</h3>
+<p>创建站点，命令格式：<code>hugo new site [path] [flags]</code>，下面的命令将在当前目录下创建 <code>hugo.pysense.github.io</code> 目录。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">λ hugo new site hugo.pysense.github.io
+Congratulations! Your new Hugo site is created in P:\Personal\Blog\hugo.pysense.github.io.
+
+Just a few more steps and you&#39;re ready to go:
+
+1. Download a theme into the same-named folder.
+   Choose a theme from https://themes.gohugo.io/ or
+   create your own with the &#34;hugo new theme &lt;THEMENAME&gt;&#34; command.
+2. Perhaps you want to add some content. You can add single files
+   with &#34;hugo new &lt;SECTIONNAME&gt;\&lt;FILENAME&gt;.&lt;FORMAT&gt;&#34;.
+3. Start the built-in live server via &#34;hugo server&#34;.
+
+Visit https://gohugo.io/ for quickstart guide and full documentation.
+</code></pre></td></tr></table>
+</div>
+</div><p>使用命令创建站点后的目录结构如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">λ ls hugo.pysense.github.io
+archetypes/  config.toml  content/  data/  layouts/  static/  themes/
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>archetypes/default.md</code> 新建文章使用的模板</li>
+<li><code>config.toml</code> 配置文件</li>
+<li><code>content/</code> 文章</li>
+<li><code>static/</code> 静态文件</li>
+<li><code>themes/</code> 主题</li>
+</ul>
+<h3 id="13-添加-hugo-主题">1.3. 添加 Hugo 主题</h3>
+<p>可以从 <a href="https://themes.gohugo.io/">Hugo Themes</a> 选择喜欢的主题，本文使用的主题为：<a href="https://github.com/olOwOlo/hugo-theme-even">olOwOlo/hugo-theme-even</a>，主题的安装与配置参考所使用的主题提供的说明文档。</p>
+<p>将主题添加到 <code>themes</code> 目录</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">cd hugo.pysense.github.io
+git init
+git submodule add https://github.com/olOwOlo/hugo-theme-even themes/even
+</code></pre></td></tr></table>
+</div>
+</div><p>主题提供了样例文件和配置文件，将其复制到当前目录下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">cp -r themes/even/exampleSite/* .
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="14-启动-hugo-本地服务">1.4. 启动 Hugo 本地服务</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">hugo server -D
+</code></pre></td></tr></table>
+</div>
+</div><p>该命令在本机启动 Web 服务，监听在 1313 端口，浏览器访问 http://localhost:1313/ 即可查看生成的博客。</p>
+<p><strong>注：<code>-D</code> 参数将同时构建 <code>content</code> 目录下文件中标记 <code>draft: true</code> 的文章。</strong></p>
+<h2 id="2-部署到-github-pages">2. 部署到 GitHub Pages</h2>
+<h3 id="21-修改主题配置文件">2.1. 修改主题配置文件</h3>
+<p>根据自己的情况修改根目录下的 <code>config.toml</code> 配置文件，其他配置参考主题的说明文档<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<p>因为刚接触 Hugo，所以并不想太深入地了解和自定义配置，如果有兴趣可以参考这篇文章：<a href="https://blog.olowolo.com/post/hugo-quick-start/">Hugo 从入门到会用 - olOwOlo&rsquo;s Blog</a>。</p>
+<h3 id="22-添加博客文章">2.2. 添加博客文章</h3>
+<p>先删除 <code>content</code> 目录下先前使用的样例文件，然后使用以下命令创建自己的第一篇 Hugo 文章。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">hugo new post/my-first-post.md
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>注：<code>hugo</code> 大部分主题使用 posts 目录存放博客文章，不过 even 主题使用的是 post 目录。（可以在主题配置文件中更改，同时要更新主题下的 <code>layouts/post</code> 目录）</strong></p>
+<p>使用任何编辑器修改文章内容，之后刷新浏览器即可查看效果。</p>
+<p>如果希望在 <code>post</code> 目录下创建层级目录，直接在路径中添加对应的目录名即可：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">hugo new post/tech/test.md
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="23-创建-about-页面">2.3. 创建 About 页面</h3>
+<p>About 页面是个特殊的页面，因此可用使用以下命令来创建：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">λ hugo new about.md
+P:\Personal\Blog\hugo.pysense.github.io\content\about.md created
+</code></pre></td></tr></table>
+</div>
+</div><p>为了在页眉添加 About 的链接，还需要修改配置文件，在合适的位置添加：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[[menu.main]]
+  name = &#34;关于&#34; # About
+  weight = 50
+  identifier = &#34;about&#34;
+  url = &#34;/about/&#34;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="24-发布到-github-pages">2.4. 发布到 GitHub Pages</h3>
+<p>需要说明一下，GitHub Pages 有两种类型，本博使用的是<strong>账户站点</strong>，就是以 <code>&lt;username&gt;.github.io</code> 命名的仓库，具体可以查看 <a href="https://pages.github.com/">GitHub Pages</a>。</p>
+<h4 id="241-手动发布到-github-pages">2.4.1. 手动发布到 GitHub Pages</h4>
+<p>因为站点目录本身已经有初始化 Git 仓库，为了单独上传 <code>public</code> 目录，我的做法是在配置文件中将 <code>public</code> 目录指定到站点目录之外：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">publishdir = &#34;../hugo.pysense.github.io.public&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>通过 <code>hugo</code> 命令生成发布文件，之后初始化 Git 仓库并上传到 GitHub Pages 站点：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">cd ../hugo.pysense.github.io.public
+git init
+git remote add upstream git@github.com:pysense/pysense.github.io
+git add .
+git commit -m &#34;Initial commit&#34;
+git push --set-upstream upstream master
+git push -f upstream
+</code></pre></td></tr></table>
+</div>
+</div><p>第一次 push 使用 <code>-f</code> 参数，表示强制推送，这将导致远程丢失所有的提交记录，下次再提交时就无需提供 <code>-f</code> 参数了。</p>
+<h4 id="242-通过-wercker-服务自动部署到-github-pages">2.4.2. 通过 Wercker 服务自动部署到 GitHub Pages</h4>
+<p>使用 Wercker 的服务自动部署到 GitHub Pages，参考：<a href="https://gohugo.io/hosting-and-deployment/deployment-with-wercker/">Deployment with Wercker | Hugo</a></p>
+<p>初始化 Git 仓库，在站点根目录执行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">git init
+</code></pre></td></tr></table>
+</div>
+</div><p>因为 Wercker 将在稍后自动生成发布目录 <code>./public</code>，因为将该目录添加到忽略文件 <code>.gitignore</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">λ cat .gitignore
+/public
+</code></pre></td></tr></table>
+</div>
+</div><p>为了防止 Wercker 报错，还需要在静态目录下存放点文件，为了简化操作，只以添加 <code>robots.txt</code> 为例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">λ cat static/robots.txt
+User-agent: *
+Disallow:
+</code></pre></td></tr></table>
+</div>
+</div><!-- raw HTML omitted -->
+<p>TODO 步骤稍微复杂，后续再更新。</p>
+<!-- raw HTML omitted -->
+<h2 id="3-参考">3. 参考</h2>
+<ul>
+<li>官方文档：<a href="https://gohugo.io/getting-started/">Get Started | Hugo</a></li>
+<li><a href="https://www.gohugo.org/doc/">Docs - Hugo中文文档</a></li>
+<li><a href="https://jdhao.github.io/2018/10/10/hexo_to_hugo/">把博客从 Hexo 迁移到 Hugo - jdhao&rsquo;s blog</a></li>
+</ul>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p><a href="https://github.com/olOwOlo/hugo-theme-even/blob/master/README-zh.md">hugo-theme-even/README-zh.md</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">PySense</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-04-01
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/hugo/">hugo</a>
+          </div>
+      <nav class="post-nav">
+        
+        
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/pysense" class="iconfont icon-github" title="github"></a>
+  <a href="http://1057.pub/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">PySense</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
