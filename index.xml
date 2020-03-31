@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>学有所思</title>
+    <link>http://1057.pub/</link>
+    <description>Recent content on 学有所思</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 01 Apr 2020 03:46:01 +0800</lastBuildDate>
+    
+	<atom:link href="http://1057.pub/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>About</title>
+      <link>http://1057.pub/about/</link>
+      <pubDate>Wed, 01 Apr 2020 03:46:01 +0800</pubDate>
+      
+      <guid>http://1057.pub/about/</guid>
+      <description>无所寄托，亦无心流浪。</description>
+    </item>
+    
+  </channel>
+</rss>
