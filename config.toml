@@ -16,7 +16,7 @@ author = "(((1057)))"
 #license = '<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA-4.0</a>'
 description = "1057's personal website"
 keywords = "study,life"
-info = ["户外爱好者，又菜又爱玩", "不吸烟不喝酒", "佛系生活，可以 都行 没关系"]
+info = ["户外爱好者，又菜又爱玩", "不吸烟不喝酒", "佛系生活，都行 可以 没关系"]
 avatarURL = "images/avatar.jpg"
 #gravatar = "john.doe@example.com"
 dateFormat = "2006-01-02"
